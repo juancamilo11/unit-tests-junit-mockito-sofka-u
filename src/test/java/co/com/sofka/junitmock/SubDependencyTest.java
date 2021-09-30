@@ -51,8 +51,6 @@ class SubDependencyTest {
         assertEquals(0, dependency.addTwo(80));
     }
 
-
-
     @AfterEach
     void tearDown() {
     }
