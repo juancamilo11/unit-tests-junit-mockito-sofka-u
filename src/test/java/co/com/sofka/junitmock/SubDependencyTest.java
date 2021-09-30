@@ -36,10 +36,19 @@ class SubDependencyTest {
 
     @Test
     public void testAddTwo(){
+        //Solo para cuando el parametro es 1, el valor de retorno sera 5
         Mockito.when(dependency.addTwo(1)).thenReturn(5);
 
         assertEquals(5, dependency.addTwo(1));
         assertEquals(0, dependency.addTwo(27));
+    }
+
+    @Test
+    public void testAddTwoAny(){
+        //Para cualquier otro valor de parametro, el valor de retorno sera 0
+        when(dependency.addTwo(Mockito.anyInt())).thenReturn(0);
+        assertEquals(0, dependency.addTwo(3));
+        assertEquals(0, dependency.addTwo(80));
     }
 
 
