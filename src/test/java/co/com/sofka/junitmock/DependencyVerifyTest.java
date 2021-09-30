@@ -7,8 +7,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class DependencyVerifyTest {
 
@@ -38,10 +37,18 @@ public class DependencyVerifyTest {
         //Descomentar y ejecutar, va a fallar la prueba
         //Mockito.verify(dependency, Mockito.atMost(100)).getClassNameUpperCase();
 
-
     }
 
-
+    @Test
+    public void testParameters(){
+        //tambien podemos verificar si se ha llamado un metodo con determinados paramtros
+        dependency.addTwo(3);
+        //Una vez con el paramtro 3
+        Mockito.verify(dependency,Mockito.times(1)).addTwo(3);
+        dependency.addTwo(4);
+        //Dos veces con cualquier parametro
+        Mockito.verify(dependency, Mockito.times(2)).addTwo(Mockito.anyInt());
+    }
 
 
 

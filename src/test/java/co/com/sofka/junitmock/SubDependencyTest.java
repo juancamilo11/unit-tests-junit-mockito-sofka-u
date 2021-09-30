@@ -27,12 +27,12 @@ class SubDependencyTest {
         assertEquals("hi there", dependency.getClassName());
     }
 
-//    @Test(expected=IllegalArgumentException.class)
-//    public void testException() {
-//        when(dependency.getClassName()).thenThrow(IllegalArgumentException.class);
-//
-//        dependency.getClassName();
-//    }
+    @Test(expected=IllegalArgumentException.class)
+    public void testException() {
+        when(dependency.getClassName()).thenThrow(IllegalArgumentException.class);
+
+        dependency.getClassName();
+    }
 
     @Test
     public void testAddTwo(){
