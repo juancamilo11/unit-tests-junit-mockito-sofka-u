@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,7 +22,7 @@ class SubDependencyTest {
 
     @Test
     public void testDependency(){
-        when(dependency.getClassName()).thenReturn("hi there");
+        Mockito.when(dependency.getClassName()).thenReturn("hi there");
 
         assertEquals("hi there", dependency.getClassName());
     }
@@ -32,6 +33,16 @@ class SubDependencyTest {
 
         dependency.getClassName();
     }
+
+    @Test
+    public void testAddTwo(){
+        Mockito.when(dependency.addTwo(1)).thenReturn(5);
+
+        assertEquals(5, dependency.addTwo(1));
+        assertEquals(0, dependency.addTwo(27));
+    }
+
+
 
     @AfterEach
     void tearDown() {
